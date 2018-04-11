@@ -1,0 +1,48 @@
+#! /bin/bash
+
+# pkroot
+#
+# wrapper for 'pkexec runwithpkexec'
+#
+# Copyright (C) 2018  Alexandru-Catalin Petrini (alexandru.c.petrini@gmail.com)
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, version 3 of the License.
+
+# This program is distributed in the hope that it will be useful,# # #
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>
+
+# 'pkexec' must be passed the exact path location of 'runwithpkexec'
+#  as mentioned in 'org.freedesktop.policykit.pkexec.runwithpkexec.policy' file
+#  and 'runwithpkexec' must actually be placed in this location for pkroot
+#  to work properly.
+runwithpkexec_path="/opt/scripts/runwithpkexec"
+print_help() {
+        printf " \n %-5s\n\n" "Help: "
+        printf " %10s %-40s %-10s\n" "" "pkroot -h --help" "Show help"
+        printf " %10s %-40s %-10s\n" "" "pkroot [command]" "Run command requesting passwording"
+        printf " %10s %-40s %-10s\n" "" "pkroot \"[command1];[command2];..\"" "Run multiple commands (as one) requesting passwording"
+        printf " %10s %-40s %-10s\n" "" "pkroot '[command1];[command2];..'" "Run multiple commands (as one) requesting passwording"
+        printf " %10s %-40s %-10s\n" "" "pkroot -d [command]" "Run command directly, where command is passed directly to pkexec."
+        printf " %10s %-40s %-10s\n" "" ""                    "Usefull to bypass \"Refusing to render service to dead parents.\"," 
+        printf " %10s %-40s %-10s\n" "" ""                    "when trying to run a process in the background, which pkexec does not allow."
+        printf " %10s %-40s %-10s\n" "" ""                    "Process needs it's own policy file which decides if pkexec runs process as root,"
+        printf " %10s %-40s %-10s\n" "" ""                    "asking for password or without password"
+}
+arg1="$1"
+args="$@"
+if [ "$arg1" == "-h" -o "$arg1" == "--help" ]; then
+    print_help
+    exit 0
+elif [ "$arg1" == "-d" -o "$arg1" == "--directly" ]; then
+    args=${args//$arg1/}
+    pkexec $args
+    exit 0
+fi
+pkexec $runwithpkexec_path "$@"
