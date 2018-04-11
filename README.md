@@ -1,8 +1,9 @@
 # argos-indicator-nvidia-prime
 Gnome Shell Indicator for NVidia Prime, using Argos API
+![NVidia Prime Argos Indicator](https://github.com/cyberalex4life/argos-indicator-nvidia-prime/blob/master/screenshots/argos-nvidia-prime1.jpg)
+![NVidia Prime Argos Indicator](https://github.com/cyberalex4life/argos-indicator-nvidia-prime/blob/master/screenshots/argos-nvidia-prime2.jpg)
 
-
-####Installation
+#### Installation
 Install [Argos](https://extensions.gnome.org/extension/1176/argos/) Gnome-Shell extension.
 
 Create directory `~/.local/share/icons` if it does not exist:
@@ -20,4 +21,4 @@ sudo cp org.freedesktop.policykit.pkexec.prime-select.policy /usr/share/polkit-1
 sudo cp pkroot /usr/local/bin/
 ```
 **Note!**
-Furthure info to be added soon...
+Further info to be added soon...
