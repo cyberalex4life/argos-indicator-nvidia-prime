@@ -1,6 +1,8 @@
 # argos-indicator-nvidia-prime
 Gnome Shell Indicator for NVidia Prime, using Argos API
+
 ![NVidia Prime Argos Indicator](https://github.com/cyberalex4life/argos-indicator-nvidia-prime/blob/master/screenshots/argos-nvidia-prime1.jpg)
+
 ![NVidia Prime Argos Indicator](https://github.com/cyberalex4life/argos-indicator-nvidia-prime/blob/master/screenshots/argos-nvidia-prime2.jpg)
 
 #### Installation
