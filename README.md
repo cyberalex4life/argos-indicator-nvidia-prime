@@ -74,7 +74,7 @@ Then uninstall Argos if you don't need it anymore.
     ```
     to use '**gksu**' in Ubuntu or Debian based distro's.
 
-    'gnomesu -c' is ment for OpenSuSE, though the script might not ready for anything other than Ubuntu's **nvidia-prime**.
+    'gnomesu -c' is ment for OpenSuSE, though the script might not be ready for anything other than Ubuntu's **nvidia-prime**.
 
     In general "*run_as_root*" has to support the following syntax:
     ```
