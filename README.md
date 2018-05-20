@@ -45,19 +45,39 @@ sudo cp /usr/local/bin/pkroot
 Then uninstall Argos if you don't need it anymore.
 
 **Note!**
-To make the indicator ask for password when switching video cards, you can either fully install
+- To make the indicator ask for password when switching video cards, you can either fully install
 ['pkroot'](https://github.com/cyberalex4life/pkroot) or edit '**org.freedesktop.policykit.pkexec.prime-select.policy**' such that these lines:
-```
-<defaults>
-    <allow_any>yes</allow_any>
-    <allow_inactive>yes</allow_inactive>
-    <allow_active>yes</allow_active>
-</defaults>
-```
-look like this:
-```
-<defaults>
-    <allow_any>auth_admin</allow_any>
-    <allow_inactive>auth_admin</allow_inactive>
-    <allow_active>auth_admin</allow_active>
-</defaults>
+
+    ```
+    <defaults>
+        <allow_any>yes</allow_any>
+        <allow_inactive>yes</allow_inactive>
+        <allow_active>yes</allow_active>
+    </defaults>
+    ```
+    look like this:
+    ```
+    <defaults>
+        <allow_any>auth_admin</allow_any>
+        <allow_inactive>auth_admin</allow_inactive>
+        <allow_active>auth_admin</allow_active>
+    </defaults>
+    ```
+
+- You can also modify second line from '**nvidia-prime.r.2s.sh**':
+    ```
+    run_as_root="pkroot -d" # gksu; pkroot; gnomesu -c;
+    ```
+    into:
+    ```
+    run_as_root="gksu" # gksu; pkroot; gnomesu -c;
+    ```
+    to use '**gksu**' in Ubuntu or Debian based distro's.
+
+    'gnomesu -c' is ment for OpenSuSE, though the script might not ready for anything other than Ubuntu's **nvidia-prime**.
+
+    In general "*run_as_root*" has to support the following syntax:
+    ```
+    run_as_root "<command_or_list_of_commands>"
+    ```
+    where **""** is the way commands are coded (and **\\\\\\"** is nothing but an escape sequence).
