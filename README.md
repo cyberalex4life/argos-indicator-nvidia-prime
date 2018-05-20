@@ -45,7 +45,7 @@ sudo cp /usr/local/bin/pkroot
 Then uninstall Argos if you don't need it anymore.
 
 **Note!**
-To make the indicator ask for password you can either fully install
+To make the indicator ask for password when switching video cards, you can either fully install
 ['pkroot'](https://github.com/cyberalex4life/pkroot) or edit '**org.freedesktop.policykit.pkexec.prime-select.policy**' such that these lines:
 ```
 <defaults>
