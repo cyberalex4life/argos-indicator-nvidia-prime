@@ -4,9 +4,10 @@ Gnome Shell Indicator for NVidia Prime, using Argos API
 ![NVidia Prime Argos Indicator](https://github.com/cyberalex4life/argos-indicator-nvidia-prime/blob/master/screenshots/argos-nvidia-prime1.jpg)                                       ![NVidia Prime Argos Indicator](https://github.com/cyberalex4life/argos-indicator-nvidia-prime/blob/master/screenshots/argos-nvidia-prime2.jpg)
 
 #### Requirements
+- [Argos](https://extensions.gnome.org/extension/1176/argos/) Gnome Shell extension.
 - nvidia-prime: `sudo apt install nvidia-prime`
 - one of the following:
-    - [pkroot](https://github.com/cyberalex4life/pkroot) - minimum already provided
+    - [pkroot](https://github.com/cyberalex4life/pkroot) - minimum already provided in github repository
     - gksu: `sudo apt install gksu`
     - gnomesu - OpenSuSE only
 
@@ -58,17 +59,17 @@ Then uninstall Argos if you don't need it anymore.
 
     ```
     <defaults>
-        <allow_any>yes</allow_any>
-        <allow_inactive>yes</allow_inactive>
-        <allow_active>yes</allow_active>
+    <allow_any>yes</allow_any>
+    <allow_inactive>yes</allow_inactive>
+    <allow_active>yes</allow_active>
     </defaults>
     ```
     look like this:
     ```
     <defaults>
-        <allow_any>auth_admin</allow_any>
-        <allow_inactive>auth_admin</allow_inactive>
-        <allow_active>auth_admin</allow_active>
+    <allow_any>auth_admin</allow_any>
+    <allow_inactive>auth_admin</allow_inactive>
+    <allow_active>auth_admin</allow_active>
     </defaults>
     ```
 
@@ -82,10 +83,34 @@ Then uninstall Argos if you don't need it anymore.
     ```
     to use '**gksu**' in Ubuntu or Debian based distro's.
 
-    'gnomesu -c' is ment for OpenSuSE, though the script might not be ready for anything other than Ubuntu's **nvidia-prime**.
+    'gnomesu -c' is meant for OpenSuSE, though the script might not be ready for anything other than Ubuntu's **nvidia-prime**.
 
     In general "*run_as_root*" has to support the following syntax:
     ```
     run_as_root "<command_or_list_of_commands>"
     ```
     where **""** is the way commands are coded (and **\\\\\\"** is nothing but an escape sequence).
+
+- To further modify position and execution timings read:
+
+    #### [Filename format](https://github.com/p-e-w/argos#filename-format) (for Argos plugins)
+
+
+    A plugin file may be named anything (it only needs to be executable), but if its name has the special form
+
+    ```
+    NAME.POSITION.INTERVAL[+].EXTENSION
+    ```
+
+    where
+
+    * `POSITION` consists of an integer (optional) + one of `l` (left), `c` (center) or `r` (right), and
+    * `INTERVAL` consists of an integer + one of `s` (seconds), `m` (minutes), `h` (hours) or `d` (days)
+
+    then
+
+    * the dropdown menu button is placed in the panel at `POSITION`, and
+    * the plugin is re-run and its output re-rendered every `INTERVAL`, and
+    * if `INTERVAL` is followed by `+`, the plugin is additionally re-run each time the dropdown menu is opened.
+
+    `POSITION` may be omitted entirely (in which case the button is placed before all other buttons on the right-hand side of the panel) while `INTERVAL` can be left empty. For example, a script named `plugin.10s.sh` is updated every 10 seconds, the button belonging to `plugin.1c..sh` is positioned just right of the GNOME Shell clock, and `plugin.l.1m.sh` is displayed left of the "Activities" button and updated every minute.
