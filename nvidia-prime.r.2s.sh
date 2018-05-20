@@ -1,16 +1,15 @@
 #!/usr/bin/env bash
 run_as_root="pkroot -d" # gksu; pkroot; gnomesu -c;
-this_script_path="$HOME/.config/argos/""$(basename "$0")"
 
-activate_intel="\"$run_as_root \\\"prime-select intel\\\"; $this_script_path\""
-activate_nvidia="\"$run_as_root \\\"prime-select nvidia\\\"; $this_script_path\""
+activate_intel="\"$run_as_root \\\"prime-select intel\\\"\""
+activate_nvidia="\"$run_as_root \\\"prime-select nvidia\\\"\""
 
-activate_intel_and_logout="\"$run_as_root \\\"prime-select intel\\\" && sleep 1 && gnome-session-quit --logout --no-prompt; $this_script_path\""
-activate_nvidia_and_logout="\"$run_as_root \\\"prime-select nvidia\\\" && sleep 1 && gnome-session-quit --logout --no-prompt; $this_script_path\""
+activate_intel_and_logout="\"$run_as_root \\\"prime-select intel\\\" && sleep 1 && gnome-session-quit --logout --no-prompt\""
+activate_nvidia_and_logout="\"$run_as_root \\\"prime-select nvidia\\\" && sleep 1 && gnome-session-quit --logout --no-prompt\""
 
 logout_cmd="\"gnome-session-quit --logout --no-prompt\""
 
-nvidia_settings="\"nvidia-settings -p 'PRIME Profiles'; $this_script_path\""
+nvidia_settings="\"nvidia-settings -p 'PRIME Profiles'\""
 nvidia_active_icon="nvidia-active-symbolic"
 nvidia_inactive_icon="nvidia-inactive-symbolic"
 logout_icon="system-log-out"
