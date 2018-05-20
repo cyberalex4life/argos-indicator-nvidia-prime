@@ -16,7 +16,7 @@ Install [Argos](https://extensions.gnome.org/extension/1176/argos/) Gnome-Shell 
 
 Create directory `~/.local/share/icons` if it does not exist:
 ```
-! [ -d "~/.local/share/icons" ] && mkdir --parents ~/.local/share/icons || true
+! [ -d "~/.local/share/icons" ] && mkdir --parents ~/.local/share/icons || trueg
 ```
 
 Then:
