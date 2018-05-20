@@ -27,6 +27,7 @@ sudo cp org.freedesktop.policykit.pkexec.prime-select.policy /usr/share/polkit-1
 
 # copy pkroot to '/usr/local/bin' and make sure it is executable
 sudo cp pkroot /usr/local/bin
+sudo chmod a+x /usr/local/bin/pkroot
 ```
 #### Uninstall
 ```
@@ -40,7 +41,7 @@ sudo rm org.freedesktop.policykit.pkexec.prime-select.policy /usr/share/polkit-1
 rm ~/.config/argos/nvidia-prime.r.2s.sh
 
 # remove pkroot script
-sudo cp /usr/local/bin/pkroot
+sudo rm /usr/local/bin/pkroot
 ```
 Then uninstall Argos if you don't need it anymore.
 
