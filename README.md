@@ -3,6 +3,13 @@ Gnome Shell Indicator for NVidia Prime, using Argos API
 
 ![NVidia Prime Argos Indicator](https://github.com/cyberalex4life/argos-indicator-nvidia-prime/blob/master/screenshots/argos-nvidia-prime1.jpg)                                       ![NVidia Prime Argos Indicator](https://github.com/cyberalex4life/argos-indicator-nvidia-prime/blob/master/screenshots/argos-nvidia-prime2.jpg)
 
+#### Requirements
+- nvidia-prime: `sudo apt install nvidia-prime`
+- one of the following:
+    - [pkroot](https://github.com/cyberalex4life/pkroot) - minimum already provided
+    - gksu: `sudo apt install gksu`
+    - gnomesu - OpenSuSE only
+
 #### Installation
 Install [Argos](https://extensions.gnome.org/extension/1176/argos/) Gnome-Shell extension.
 
