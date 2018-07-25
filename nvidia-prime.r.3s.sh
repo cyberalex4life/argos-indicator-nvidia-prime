@@ -1,4 +1,4 @@
-#f4844fe12141854091f4d9d36acb4ac7362b98b7!/usr/bin/env bash
+#/usr/bin/env bash
 run_as_root="pkroot -d" # gksu; pkroot; gnomesu -c;
 
 
