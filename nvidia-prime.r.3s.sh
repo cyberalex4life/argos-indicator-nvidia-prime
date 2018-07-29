@@ -1,35 +1,37 @@
 #!/usr/bin/env bash
 run_as_root="pkroot -d" # gksu; pkroot; gnomesu -c;
-
+notify_switch="notify-send -h int:transient:2 \\\"dialog-information-symbolic\\\" \\\"NVidia Prime Indicator\\\" \\\"Switching graphics. Please reboot to finalize process! \\\" & "
+notify_switch_and_reboot="notify-send -h int:transient:2 -i \\\"dialog-information-symbolic\\\" \\\"NVidia Prime Indicator\\\" \\\"Switching graphics. System will reboot soon... \\\" & "
+notify_reboot="notify-send -h int:transient:2 -i \\\"dialog-information-symbolic\\\"  \\\"NVidia Prime Indicator\\\" \\\"System will reboot! \\\" & "
 
 activate_intel="\"\
-	notify-send -h int:transient:2 \\\"dialog-information-symbolic\\\" \\\"NVidia Prime Indicator\\\" \\\"Switching graphics. Please reboot to finalize process! \\\"; \
+	$notify_switch \
 	$run_as_root \\\"prime-select intel\\\" \
 	\""
 
 activate_nvidia="\"\
-	notify-send -h int:transient:2 \\\"dialog-information-symbolic\\\" \\\"NVidia Prime Indicator\\\" \\\"Switching graphics. Please reboot to finalize process! \\\"; \
+	$notify_switch \
 	$run_as_root \\\"prime-select nvidia\\\" \
 	\""
 
 activate_intel_and_reboot="\"\
-	notify-send -h int:transient:2 -i \\\"dialog-information-symbolic\\\" \\\"NVidia Prime Indicator\\\" \\\"Switching graphics. System will reboot soon... \\\"; \
+	$notify_switch_and_reboot \
 	$run_as_root \\\"prime-select intel\\\"; \
-	notify-send -h int:transient:2 -i \\\"dialog-information-symbolic\\\"  \\\"NVidia Prime Indicator\\\" \\\"System will reboot! \\\"; \
+	$notify_reboot \
 	sleep 2; \
 	systemctl reboot \
 	\""
 
 activate_nvidia_and_reboot="\"\
-	notify-send $notify_on_switch_and_reboot & \
+	$notify_switch_and_reboot \
 	$run_as_root \\\"prime-select nvidia\\\"; \
-	notify-send -h int:transient:2  -i \\\"dialog-information-symbolic\\\"  \\\"NVidia Prime Indicator\\\" \\\"System will reboot! \\\"; \
+	$notify_reboot \
 	sleep 2; \
 	systemctl reboot \
 	\""
 
 reboot_cmd="\"\
-	notify-send -h int:transient:2  -i \\\"dialog-information-symbolic\\\"  \\\"NVidia Prime Indicator\\\" \\\"System will reboot! \\\"; \
+	$notify_reboot \
 	sleep 2; \
 	systemctl reboot \
 	\""
