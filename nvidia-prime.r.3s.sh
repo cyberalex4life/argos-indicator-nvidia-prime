@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 run_as_root="pkroot -d" # gksu; pkroot; gnomesu -c;
-notify_switch="notify-send -h int:transient:2 \\\"dialog-information-symbolic\\\" \\\"NVidia Prime Indicator\\\" \\\"Switching graphics. Please reboot to finalize process! \\\" & "
-notify_switch_and_reboot="notify-send -h int:transient:2 -i \\\"dialog-information-symbolic\\\" \\\"NVidia Prime Indicator\\\" \\\"Switching graphics. System will reboot soon... \\\" & "
-notify_reboot="notify-send -h int:transient:2 -i \\\"dialog-information-symbolic\\\"  \\\"NVidia Prime Indicator\\\" \\\"System will reboot! \\\" & "
+notify_switch="notify-send -h int:transient:2 \\\"dialog-information-symbolic\\\" \\\"NVidia Prime Indicator\\\" \\\"Switching graphics. Please reboot to finalize process! \\\" ; "
+notify_switch_and_reboot="notify-send -h int:transient:2 -i \\\"dialog-information-symbolic\\\" \\\"NVidia Prime Indicator\\\" \\\"Switching graphics. System will reboot soon... \\\" ; "
+notify_reboot="notify-send -h int:transient:2 -i \\\"dialog-information-symbolic\\\"  \\\"NVidia Prime Indicator\\\" \\\"System will reboot! \\\" ; "
 
 activate_intel="\"\
 	$notify_switch \
@@ -18,22 +18,22 @@ activate_intel_and_reboot="\"\
 	$notify_switch_and_reboot \
 	$run_as_root \\\"prime-select intel\\\"; \
 	$notify_reboot \
-	sleep 2; \
-	systemctl reboot \
+	sleep 1; \
+	systemctl --no-wall reboot \
 	\""
 
 activate_nvidia_and_reboot="\"\
 	$notify_switch_and_reboot \
 	$run_as_root \\\"prime-select nvidia\\\"; \
 	$notify_reboot \
-	sleep 2; \
-	systemctl reboot \
+	sleep 1; \
+	systemctl --no-wall reboot \
 	\""
 
 reboot_cmd="\"\
 	$notify_reboot \
-	sleep 2; \
-	systemctl reboot \
+	sleep 1; \
+	systemctl --no-wall reboot \
 	\""
 
 nvidia_settings="\"nvidia-settings -p 'PRIME Profiles'\""
